@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          coreApp="true"
+          package="com.ndroid.atservice"
+          android:sharedUserId="android.uid.system">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-library android:name="ndroid-manager" />
+
+    <application
+        android:allowBackup="false"
+        android:allowClearUserData="false"
+        android:launchMode="singleTask"
+        android:persistent="false">
+
+        <service
+            android:name=".AntiTheftService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="ANTI_THEFT_SERVICE_ACTION" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".BootCompletedReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
+
