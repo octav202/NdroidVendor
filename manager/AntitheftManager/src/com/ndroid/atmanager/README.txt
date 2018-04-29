@@ -26,3 +26,5 @@
 
     /build/target/product/core_minimal.mk
     - add jar PRODUCT_BOOT_JARS - add ndroid-manager
+
+    alternative - push ndroid-manager and AntiTheftService.apk
