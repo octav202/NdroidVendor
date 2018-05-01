@@ -1,8 +1,8 @@
 package com.ndroid.atmanager;
 interface IAntiTheftService {
-	// Device Id
-	int getDeviceId();
-	void setDeviceId(int id);
+    // Device Id
+    int getDeviceId();
+    void setDeviceId(int id);
 
     // Device Name
     String getDeviceName();
@@ -23,4 +23,14 @@ interface IAntiTheftService {
     // AntiTheft Frequency
     int getAtFrequency();
     void setAtFrequency(int frequency);
+
+    // Register Device
+    void registerDevice(String name, String pass);
+
+    // Device Functions
+    void lock(boolean status);
+    void wipe(boolean status);
+    void ring(boolean status);
+    void reboot(boolean status);
+    void encryptStorage(boolean status);
 }

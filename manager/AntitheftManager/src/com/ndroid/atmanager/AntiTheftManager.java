@@ -227,20 +227,86 @@ public class AntiTheftManager {
         }
     }
 
-    public void setValue(int val) {
+    public void registerDevice(String name, String pass) {
+        Log.d(TAG, "registerDevice() " + name + ", " + pass);
+        if (mService != null) {
+            try {
+                mService.registerDevice(name, pass);
+            } catch (RemoteException e) {
+                Log.e(TAG, "registerDevice() Exception " + e.getLocalizedMessage());
+            }
+        } else {
+            Log.e(TAG, "Service is null");
+        }
+    }
 
-//        IAntiTheftService binder = IAntiTheftService.Stub.asInterface(
-//                ServiceManager.getService(ANTI_THEFT_SERVICE_CLASS));
-//
-//        if (binder == null) {
-//            Log.d(TAG, "Error - Null Service");
-//            return;
-//        }
-//        try {
-//            binder.setValue(20);
-//            Log.d(TAG, "Service called succesfully");
-//        } catch (Exception e) {
-//            Log.d(TAG, "Exception: " + e.getLocalizedMessage());
-//        }
+
+    /**
+     * Device functions
+     */
+
+    public void lock(boolean status) {
+        Log.d(TAG, "lock() + status");
+        if (mService != null) {
+            try {
+                mService.lock(status);
+            } catch (RemoteException e) {
+                Log.e(TAG, "lock() Exception " + e.getLocalizedMessage());
+            }
+        } else {
+            Log.e(TAG, "Service is null");
+        }
+    }
+
+    public void wipe(boolean status) {
+        Log.d(TAG, "wipe() + status");
+        if (mService != null) {
+            try {
+                mService.wipe(status);
+            } catch (RemoteException e) {
+                Log.e(TAG, "wipe() Exception " + e.getLocalizedMessage());
+            }
+        } else {
+            Log.e(TAG, "Service is null");
+        }
+    }
+
+    public void reboot(boolean status) {
+        Log.d(TAG, "wipe() " + status);
+        if (mService != null) {
+            try {
+                mService.reboot(status);
+            } catch (RemoteException e) {
+                Log.e(TAG, "reboot() Exception " + e.getLocalizedMessage());
+            }
+        } else {
+            Log.e(TAG, "Service is null");
+        }
+    }
+
+    public void ring(boolean status) {
+        Log.d(TAG, "ring() " + status);
+        if (mService != null) {
+            try {
+                mService.ring(status);
+            } catch (RemoteException e) {
+                Log.e(TAG, "ring() Exception " + e.getLocalizedMessage());
+            }
+        } else {
+            Log.e(TAG, "Service is null");
+        }
+    }
+
+    public void encryptStorage(boolean status) {
+        Log.d(TAG, "encryptStorage() " + status);
+        if (mService != null) {
+            try {
+                mService.encryptStorage(status);
+            } catch (RemoteException e) {
+                Log.e(TAG, "reboot() Exception " + e.getLocalizedMessage());
+            }
+        } else {
+            Log.e(TAG, "Service is null");
+        }
     }
 }

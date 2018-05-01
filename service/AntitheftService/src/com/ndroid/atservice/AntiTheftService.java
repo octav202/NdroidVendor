@@ -12,7 +12,7 @@ import com.ndroid.atmanager.AntiTheftManager;
 import static com.ndroid.atservice.Constants.AT_SERVICE;
 
 public class AntiTheftService extends Service {
-    public static final String TAG = "AT_Service";
+    public static final String TAG = "AT_AntiTheftService";
 
     private Context mContext;
     private AntiTheftBinder mBinder;
@@ -46,11 +46,16 @@ public class AntiTheftService extends Service {
         Log.d("AT_", "onCreate()");
         mBinder = new AntiTheftBinder(getApplicationContext());
 
-        // Bind Manager to Service
         AntiTheftManager.getInstance(getApplicationContext());
-
-//        ServiceManager.addService(AT_SERVICE, mBinder);
-//        Log.d(TAG, "AT_SERVICE - added to ServiceManager");
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy()");
+
+        if (mBinder != null) {
+            mBinder.onDestroy();
+        }
+    }
 }
