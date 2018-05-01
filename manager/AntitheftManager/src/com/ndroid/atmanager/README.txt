@@ -28,3 +28,6 @@
     - add jar PRODUCT_BOOT_JARS - add ndroid-manager
 
     alternative - push ndroid-manager and AntiTheftService.apk
+
+    // Set Device Owner
+    adb shell dpm set-device-owner com.ndroid.atservice/.AdminReceiver

@@ -9,14 +9,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
@@ -381,24 +379,6 @@ public class AntiTheftBinder extends IAntiTheftService.Stub {
     private boolean isAdminActive() {
         ComponentName receiver = new ComponentName(mContext, AdminReceiver.class);
         return mDeviceManager.isAdminActive(receiver);
-    }
-
-    public static class AdminReceiver extends DeviceAdminReceiver {
-
-        @Override
-        public void onEnabled(Context context, Intent intent) {
-            super.onEnabled(context, intent);
-        }
-
-        @Override
-        public CharSequence onDisableRequested(Context context, Intent intent) {
-            return super.onDisableRequested(context, intent);
-        }
-
-        @Override
-        public void onDisabled(Context context, Intent intent) {
-            super.onDisabled(context, intent);
-        }
     }
 
     /**
